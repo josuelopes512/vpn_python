@@ -11,7 +11,7 @@ from threading import Thread
 
 def get_ip():
     res = req.get("http://icanhazip.com")
-    ip = res.content.decode("utf-8").replace("\n")
+    ip = res.content.decode("utf-8")
     print(f"IP: {ip}")
 
 def print_usage():
