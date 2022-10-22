@@ -117,7 +117,7 @@ def start_vpn():
     remote_ip = None  # ZeroTier IP of remote node
     remote_port = 8080  # ZeroTier port your app logic may use
     
-    if any(sys.argv):
+    if len(sys.argv) < 2 or len(sys.argv) > 5:
         mode = sys.argv[1]
         net_id = int(sys.argv[2], 16)
     else:
@@ -126,7 +126,7 @@ def start_vpn():
         net_id = int(network_id, 16)
     
     if 'client' in mode:
-        if any(sys.argv):
+        if len(sys.argv) < 2 or len(sys.argv) > 5:
             remote_ip = sys.argv[3]
             remote_port = int(sys.argv[4])
         else:
