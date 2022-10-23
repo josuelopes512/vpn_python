@@ -112,12 +112,11 @@ def node_start(storage_path, net_id):
 
 def start_vpn():
     mode = None # client|server
-    storage_path = "."  # Where identity files are stored
+    storage_path = "temp"  # Where identity files are stored
     net_id = 0  # Network to join
     remote_ip = None  # ZeroTier IP of remote node
     remote_port = 8080  # ZeroTier port your app logic may use
-    
-    if len(sys.argv) < 2 or len(sys.argv) > 5:
+    if len(sys.argv) >= 2 and len(sys.argv) < 5:
         mode = sys.argv[1]
         net_id = int(sys.argv[2], 16)
     else:
@@ -126,7 +125,7 @@ def start_vpn():
         net_id = int(network_id, 16)
     
     if 'client' in mode:
-        if len(sys.argv) < 2 or len(sys.argv) > 5:
+        if len(sys.argv) >= 2 and len(sys.argv) < 5:
             remote_ip = sys.argv[3]
             remote_port = int(sys.argv[4])
         else:
